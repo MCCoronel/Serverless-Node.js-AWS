@@ -1,0 +1,19 @@
+
+service: Moment
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+
+functions:
+  GetMoment:
+    handler: handler.GetMoment
+    events:
+      - http:
+          path: /GetMoment
+          method: get
+          authorizer: aws_iam
+
