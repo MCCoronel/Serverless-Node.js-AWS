@@ -6,7 +6,21 @@ frameworkVersion: "3"
 provider:
   name: aws
   runtime: nodejs18.x
+  lambdaHashingVersion: 20201221
 
+plugins:
+  - serverless-prune-plugin
+  - serverless-offline
+  - serverless-plugin-include-dependencies
+
+package:
+  exclude:
+   -node_modules/**    
+
+custom:
+  prune:
+    automatic: true
+    number: 1
 
 functions:
   GetMoment:
