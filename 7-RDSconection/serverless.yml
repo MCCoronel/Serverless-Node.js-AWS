@@ -1,5 +1,5 @@
 
-service: RDSconection
+service: RDSconnection
 
 frameworkVersion: "3"
 
@@ -9,14 +9,15 @@ provider:
   lambdaHashingVersion: 20201221
   vpc:
     securityGroupIds:
-      - sg-000d674892e8bfa41    
+      - sg-075bd49d50ca2f192    
     subnetIds:
-      - subnet-04e8713b0d568599d
-      - subnet-0bf95ac9a5dca5137
-      - subnet-01e386c6a9a214277
-      - subnet-01d7646e8f230e219
-      - subnet-002bdad1ddeb7d437
-      - subnet-051859e40813da2a8
+      - subnet-02f886d30f9c26967
+      - subnet-0cda6ab30269b661e
+      - subnet-089ab30c5e38abef8
+      - subnet-0e2e328687cc2d570
+      - subnet-0e921e7f02c00aedf
+      - subnet-0383221254e6d56c1 
+           
 
 functions:
   RDSTestConnection:

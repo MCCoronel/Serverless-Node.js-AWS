@@ -1,24 +1,25 @@
+'use strict';
+
 const pool = require('../connection');
 
-module.exports.RDSTestConnection = async (event, context, callback) => {
+module.exports.RDSTestConnection =(event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
   const sql = 'SELECT 1+1';
-
+  console.log('sql:', sql);
+  console.log('pool.getConnection:', pool.getConnection);
   pool.getConnection(function (err, connection) {
-    if (err) throw err; // not connected!
-    connection.query(sql, function (error, results, fields) {
-      //connection.release();
+    if (err) throw err;
+    connection.query(sql, function (error, results) {
       if (error) {
         callback({
           statusCode: 400,
           headers: {
             'Content-Type': 'application/json',
           },
-          body: context.failure(
+          body: context.fail(
             JSON.stringify({
               success: false,
-              message: 'Error al ejecutar la consulta',
-              input: event,
+              message: error,
             })
           ),
         });
@@ -28,15 +29,13 @@ module.exports.RDSTestConnection = async (event, context, callback) => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: context.success(
-            JSON.stringify({
-              success: true,
-              message: 'Consulta exitosa',
-              data: results,
-            })
-          ),
+          body: JSON.stringify({
+            success: true,
+            message: '¡Exito!',
+            data: results,
+          }),
         });
-        connection.release(); //Libera la conexion, porque estamos trabajando con una pool de peticiones, por lo tanto hay que liberarla para que pueda vovler a reutilizarse
+        connection.release();
       }
     });
   });
