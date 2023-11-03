@@ -2,11 +2,11 @@ const mysql = require('mysql');
 
 const configDB = {
   connectionLimit: 10,
-  host: 'rds-curso.cfeaftyuibar.us-east-1.rds.amazonaws.com',
-  user: 'Curso',
-  password: 'Onicha96+',
-  port: '3306',
-  database: 'RDScurso',
+  host: '',
+  user: '',
+  password: '',
+  port: '',
+  database: '',
   debug: true,
 };
 
