@@ -26,3 +26,10 @@ functions:
       - http:
           path: /RDSconnection/RDSTestConnection
           method: get
+
+  RDScreate:
+    handler: Handlers/handlerRDScreate.RDScreate
+    events:
+      - http:
+          path: /RDSconnection/RDScreate
+          method: post
