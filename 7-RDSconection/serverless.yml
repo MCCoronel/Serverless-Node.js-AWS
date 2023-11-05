@@ -33,3 +33,10 @@ functions:
       - http:
           path: /RDSconnection/RDScreate
           method: post
+
+  RDSupdate:
+    handler: Handlers/handlerRDSupdate.RDSupdate
+    events:
+      - http:
+          path: /RDSconnection/RDSupdate
+          method: put
