@@ -6,12 +6,11 @@ module.exports.RDScreate =(event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
   // Parse el cuerpo del evento como JSON directamente
-  const body = event.body ? JSON.parse(event.body) : {};
-  console.log('event:', event);
-  
+  const body = JSON.parse(event.body);
+
   const sqlCreate ={
-    Usuario: body.usuario,
-    Nombre:body.nombre
+    USUARIO: body.Usuario,
+    NOMBRE:body.Nombre
   }
 
  console.log('sqlCreate:', sqlCreate);
